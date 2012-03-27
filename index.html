@@ -1,0 +1,138 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh-cn"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="zh-cn"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="zh-cn"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-cn"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/i/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+  <title>Requirejs example</title>
+  <meta name="description" content="">
+
+  <!-- Mobile viewport optimized: h5bp.com/viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="Content/css/global/reset.css" />
+  <link rel="stylesheet" type="text/css" href="Content/css/global/html5reset.css" />
+  <link rel="stylesheet" type="text/css" href="Content/css/global/global.css" />
+  <link rel="stylesheet" type="text/css" href="Content/css/header/header.css" />
+  <link rel="stylesheet" type="text/css" href="Content/css/footer/footer.css" />
+  <link rel="stylesheet" type="text/css" href="Content/css/login/login.css" />
+  <!--[if lt IE 9]><!--> 
+  	<link rel="stylesheet" type="text/css" href="Content/css/login/ltie9.css" /> 
+  <!--<![endif]-->
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <!-- <link rel="stylesheet" href="Content/css/style.css"> -->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except this Modernizr build.
+       Modernizr enables HTML5 elements & feature detects for optimal performance.
+       Create your own custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="Scripts/libs/modernizr/2.5.3/modernizr.min.js"></script>
+  <script type="text/javascript" src="Scripts/libs/require/1.0.7/require.min.js"></script>
+  <script type="text/javascript">
+  	require({
+		baseUrl: "Scripts",
+	  	paths: {
+			//'order'	  :	'libs/require/plugin/order',
+			//'global'  :	'global/login/require',
+			'config'  :	'global/login/config',
+			'patrns'  :	'global/login/config.patrns',
+			'console.plugin'  :	'global/console.plugins',
+	    	'jquery'  :	'libs/jquery/1.7.2/jquery.min',
+			'jquery.cookie' :	'libs/jquery.cookie/jquery.cookie.module',
+			'jquery.md5' :	'libs/jquery.md5/jquery.md5.module',
+			'jquery.ui' : 'libs/jquery.ui/1.8.18/ui.module'
+	  	},
+		priority:['jquery'],
+		//catchError:true,
+		waitSeconds: 60
+	},['./global/login/require/main']);
+  </script>
+</head>
+<body>
+<div id="login-main">
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <header class="header"></header>
+  <div role="main" class="login login-height">
+        <div class="pa login-height login-content">
+        	<div class="fl">
+                <figure class="login-logo">
+                	<img alt="客户关系管理系统" src="Content/images/login-logo.gif" width="310" height="68" />
+                    <figcaption class="hidden">深圳市LED产业联合会</figcaption>
+                </figure>
+                <section class="login-infomation">
+                	<h4 class="hidden">infomation</h4>
+                    <ul>
+                        <li>1- 企业IT信息化实施的首选方案...</li>
+                        <li>2- 一站通式的整合方式，方便用户使用...</li>
+                        <li>3- 强大的后台系统，管理内容易如反掌...</li>
+                    </ul>
+                </section>
+				<!--<div class="pt10 pl60"><img src="App_Themes/global/images/icon-demo.gif" width="16" height="16"><a href="http://www.gomesoft.com" target="_blank" class="left_txt3"> 使用说明</a> </div>-->
+            </div>
+            <div class="fl form-action">
+            	<form method="post" action="" id="form-inputs" name="login-form">
+                	<p class="form-item pr">
+                        <input name="account" tabindex="1" class="form-input cp" id="username" type="text"/>
+                        <label class="pa form-label cp" for="username">用户名</label>
+                        <span class="pa form-tip"> </span>
+                    </p>
+                    <p class="form-item pr mt10">
+                        <input name="password" tabindex="2" class="form-input cp" id="userpass" type="password"/>
+                        <label class="pa form-label cp" for="userpass">密 码</label>
+                        <span class="pa form-tip"> </span>
+                    </p>
+                    <p class="cb form-misc pt10 pb10">
+                         <span><input type="checkbox" name="remember-box" id="remember-box" value="0" /> 
+                         <label class="remember cp" id="remember-label">保持登陆7天<em>（非本机请谨慎操作）</em></label></span>
+                    </p>
+                    <p class="pr btn block">
+                        <button class="ti cp btn-submit" id="submitButton" tabIndex="3"  type="button" > </button>
+                        <a class="pa ti btn-master" href="javascript:void(0);"><span class="loading block">正在登录</span></a>
+                    </p>
+                </form>
+            </div>
+        </div>
+  </div>
+  <footer class="pa footer tc">
+  	<p>Copyright &copy; 2011-2012 <a href="http://www.gomesoft.com" target="_blank" style="color:#FFFFFF">www.gomesoft.com</a></p>
+  </footer>
+
+</div>
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+ <!-- <script>window.jQuery || document.write('<script src="Scripts/libs/jquery/1.7.2/jquery.min.js"><\/script>')</script>-->
+
+  <!-- scripts concatenated and minified via build script -->
+  <!--
+  <script src="js/plugins.js"></script>
+    <script src="js/script.js"></script>-->
+  
+  <!-- end scripts -->
+
+  <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+       mathiasbynens.be/notes/async-analytics-snippet -->
+  <script>
+/*
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));*/
+
+  </script>
+</body>
+</html>

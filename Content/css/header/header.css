@@ -1,0 +1,5 @@
+/* CSS Document */
+body{ background:url(../../images/body_bg.jpg) repeat;}
+.header{ height:42px; background:url(../../images/login-top-bg.gif) repeat-x;}
+.head_txt{ color:#FFF;}
+.head_txt a{ color:#FF6600;}

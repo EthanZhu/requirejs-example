@@ -1,0 +1,109 @@
+﻿/* CSS Document */
+body{background:url(../../images/login_bg.jpg) left 42px repeat-x,url(../../images/body_bg.jpg) repeat;}
+#login-main{height:100%; position:relative;}
+.login-content{ background:url(../../images/login-content-bg.gif) 100px top no-repeat; width:848px; left:50%; margin-left:-424px; top:42px;}
+.login-height{ height:532px;}
+.login-logo{ padding:130px 0 0 50px;}
+.login-infomation{ padding:10px 0 0 80px;}
+.login-infomation li{ line-height:30px; font-size:14px;}
+
+.form-action {
+	padding:140px 0 0 80px;
+}
+.form-item {
+	width:194px;
+	padding:4px;
+	background:url(../../images/reg-v2-input-sprites.png) no-repeat 0px 0px;
+	margin-right:8px;
+	_margin-right:7px;
+	height:34px;
+	_height:32px;
+}
+.focus {
+	background-position:0px -42px
+}
+.form-input {
+	background:none transparent scroll repeat 0% 0%;
+	line-height:34px;
+	_line-height:32px;
+	height:34px;
+	_height:32px;
+	font-size:18px;
+	border:medium none;
+	z-index:200;
+	width:194px;
+}
+.form-label {
+	color:#bababa;
+	font-size:18px;
+	top:8px;
+	left:8px;
+	_top:10px;
+	z-index:100;
+	font-size:18px;
+}
+.focus .form-label {
+	color:#ccc;
+}
+.btn{ width:130px; height:40px; overflow:hidden;}
+.btn-submit {
+	border: medium none;
+	width: 130px;
+	background:url(../../images/login-v2-submit.png) no-repeat 0px 0px;
+	height: 40px;
+	position:absolute;
+	left:0;
+	top:0;
+}
+.btn-submit:hover {
+	background-position:0 -40px
+}
+.form-tip {
+	line-height:22px;
+	padding:4px 5px 4px 25px;
+	left:200px;
+	width:180px;
+	color:#F00;
+	top:4px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+    border-radius: 2px 2px;
+	visibility:hidden;
+}
+.error {
+	background-position:0 -84px;
+}
+.error .form-tip {
+	background:#edc47d url(../../images/onError.gif) 3px 50% no-repeat;
+	visibility:visible;
+}
+
+.onshow .form-tip {
+	background:#d3d9de url(../../images/onFocus.gif) 3px 50% no-repeat;
+	color:#000000;
+	visibility:visible;
+}
+.correct .form-tip {
+	background: url(../../images/onCorrect.gif) 3px 50% no-repeat;
+	height:20px;
+	visibility:visible;
+}
+
+.btn-master{ background:url(../../images/login-v2-load.png) no-repeat 0 0; width:130px; height:40px; left:0; top:0; visibility:hidden;}
+.btn-master .loading{ background:url(../../images/loader-small.gif) no-repeat 50% 50%; height:40px; width:20px; margin-left:98px;}
+.visibility{visibility:visible;}
+
+.form-misc {
+	color:#324f65;
+	padding-left:5px;
+}
+.remember em {
+	color:#999;
+}
+.pl60{ padding-left: 60px;}
+
+.master{ position:absolute; border:#cd8124 1px solid; background:#ffebb3; width:100%; left:0; top:3px; font-size:14px; color:#000; display:none;}
+.master p{ padding:10px 50px 10px 30px;}
+.m-close{ position:absolute; background:#FFF; border:#5bb8ff 1px solid; padding:0 2px; color:#4b8fcf; cursor:pointer; padding-top:2px;display:none;}
+.m-close-short{right:5px; top:18px;}
+.m-close-long{ right: 40px; top:18px;}

@@ -1,0 +1,78 @@
+﻿/** 布局基础样式 **/
+#container{ min-width:1004px;}
+.layout {
+	overflow:hidden;
+}
+
+.cols-sub, .cols-extra {
+	float: left;
+}
+
+/** 清除浮动 **/
+.layout:after, .main-wrap:after, .cols-main:after, .cols-sub:after, .cols-extra:after {
+	content: '\20';
+	display: block;
+	height: 0;
+	clear: both;
+}
+#layout, .main-wrap, .cols-sub, .cols-extra {
+ *zoom: 1;
+}
+
+
+.main-wrap {
+	width:100%;
+	float:left;
+	/* bug fix: 主栏没有内容时，在 Firefox 和 Chrome 等浏览器下，布局不对 */
+	min-height:1px;
+}
+
+.cols-sub {
+	float:left;
+	width:200px;
+	margin-left:-100%;
+}
+
+.cols-extra {
+	float:left;
+	width: 340px;
+	visibility:hidden;
+	margin-left: -342px;/**使用补丁的时候需要加上边框***/
+}
+
+
+.cols-main, .cols-sub,.cols-extra{
+	background:#f4f7fa;
+	/*border:#F30 1px solid;*/
+	overflow:hidden;
+}
+/**等高处理不需要可以注释掉**/
+.cols-main, .cols-sub, .main-wrap,.cols-extra{
+	padding-bottom:99999px;
+	margin-bottom:-99999px;	
+}
+/**两栏布局**/
+.cols-main {
+	margin-left:215px;
+	margin-right:0px;
+	/*margin:0 1% 0 20%;*/
+}
+
+/**三栏布局**/
+.grid3 .cols-main {
+	margin-left:215px;
+	margin-right:357px;
+	/*margin:0 1% 0 20%;*/
+}
+.grid3 .cols-extra{
+	visibility:visible;
+}
+
+
+.spaceh{
+	height:15px; line-height:15px; font-size:15px; overflow:hidden;
+	background:#d3d9de;
+	}
+.left-nav{ width:200px;}
+
+.ui-min-height{min-height:500px;}

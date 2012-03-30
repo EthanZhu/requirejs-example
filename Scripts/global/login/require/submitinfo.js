@@ -2,8 +2,8 @@ define(['require',
 		'config',
 		'./forminit',
 		'./tipmessage',
-		//'./initpassword'
-		],function(require, config,formInit , tipMessage ){
+		'./initpassword'
+		],function(require, config){
 			
 
 	var _initInput = null ,
@@ -37,13 +37,14 @@ define(['require',
 			});
 		},
 		__btnSubmitClick : function(){
+			_tipMessage = require('./tipmessage');
 			var _inputs = {
 				username:	$("#username").val() ,
 				password:	$("#userpass").val() ,
 				remember:	$("#remember-box").attr('checked'),
 				checkcode: null
 			};
-			tipMessage.showTipMessage(_inputs)
+			_tipMessage.showTipMessage(_inputs)
 			var _inputTipNums = config.inputTipNums;
 			this.log('tip nums')
 			this.log(_inputTipNums);
@@ -51,22 +52,26 @@ define(['require',
 			_initInput = require('./forminit');
 			
 			if( !_inputTipNums.nameNum && !_inputTipNums.passNum){
+				var _config = null;
 				require(['jquery.md5'],function(){
+					_config = config;
 					var md5Pass = _inputs.password;
-					if (config.isInputPass) {
+					if (_config.isInputPass) {
 						md5Pass = $.md5(md5Pass);
 						_inputs.password = md5Pass;
 						$("#userpass").val(md5Pass);
 						//_this.debug("user input password :"+items.isInputPass);
-						config.isInputPass = false;
+						_config.isInputPass = false;
 					}
 					this.log(_inputs);
 					$(config.submitMaster).addClass("visibility");
 					_initInput.disabledInput();
 					__action.__ajaxCheckLogin(_inputs)
 				});
-	
+				_config = null; 
 			}
+			
+			_inputs = null;
 			
 		},
 		__ajaxCheckLogin : function(_inputs){
@@ -78,7 +83,7 @@ define(['require',
 			
 			_initInput = require('./forminit');
 			_initPassword = require('./initpassword');
-			
+			_tipMessage = require('./tipmessage');
 			if(!_inputs.remember)
 				$params.remember = 0;
 			//this.log($params);
@@ -100,19 +105,22 @@ define(['require',
 							var _nums = config.inputTipNums;
 							_nums.nameNum = data.nameNum;
 							_nums.passNum = data.passNum;
-							tipMessage.getTipMessage(0, config.nameTipHtml, _nums.nameNum);
-							tipMessage.getTipMessage(1, config.passTipHtml, _nums.passNum);
+							_tipMessage.getTipMessage(0, config.nameTipHtml, _nums.nameNum);
+							_tipMessage.getTipMessage(1, config.passTipHtml, _nums.passNum);
 							__action.__bindButtonSubmit();
 						}
+						_initInput = _initPassword = _tipMessage = null;
 					},
 					error	: function(err){
 						//_initPassword.success($params,true);
 						_initInput.enabledInput();
 						__action.__bindButtonSubmit();
-						tipMessage.ajaxErrorTip(0, config.nameTipHtml,7);
+						_tipMessage.ajaxErrorTip(0, config.nameTipHtml,7);
 						alert(err.statusText);
+						_initInput = _tipMessage = null;
 					}
-				});	
+				});
+			
 		}
 	}
 	

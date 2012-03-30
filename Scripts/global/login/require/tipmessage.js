@@ -1,12 +1,7 @@
 define(['config','patrns'],function(config,patrns){
 
-	var _inputClass = config.inputClass,
-		_labelClass = config.labelClass,
-		_formItem = config.formItem,
-		_formTip = config.tipClass
-		_rememberLabel = config.rememberLabel,
-		_rememberBox = config.rememberBox,
-		_isRemember = config.isRemember;
+	var _formItem = config.formItem,
+		_formTip = config.tipClass;
 		
 	
 	var __action = {
@@ -40,27 +35,26 @@ define(['config','patrns'],function(config,patrns){
 		
 		__getTipNum : function(checkValue,minLength,maxLength,_inputs){
 			var valueLength = checkValue.length;
-			var tag = null;
 			if( valueLength==0 ){
-					tag = 1;
+					return 1;
 				}
 			if( valueLength>0 && valueLength<minLength ){
-					tag = 2;
+					return 2;
 				}
 			if( !config.isInputPass && _inputs=="pass" ){
 					maxLength = 32;	
 				}
 			if( valueLength>maxLength ){
-					tag = 3;
+					return 3;
 				}
 			if(valueLength>(minLength-1) && valueLength<(maxLength+1)){
 				if ( _inputs=="name" && !patrns.name.exec(checkValue) ){
-					tag = 4;
+					return 4;
 				}else if (_inputs=="pass" && !patrns.pass.exec(checkValue)){
-					tag = 4;
+					return 4;
 				}
 			}
-			return tag;
+			//return tag;
 		},
 			
 		__returnTipNums : function(_inputs){

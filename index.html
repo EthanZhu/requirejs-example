@@ -2,14 +2,16 @@
 <html class="no-js" lang="zh-cn">
 <head>
   <meta charset="utf-8">
-
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+<!--   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
 
   <title>Requirejs example</title>
   <meta name="description" content="">
 
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
   <link rel="stylesheet" type="text/css" href="Content/css/global/reset.css" />
   <link rel="stylesheet" type="text/css" href="Content/css/global/html5reset.css" />
   <link rel="stylesheet" type="text/css" href="Content/css/global/global.css" />
@@ -19,7 +21,10 @@
   <!--[if lt IE 9]><!--> 
   	<link rel="stylesheet" type="text/css" href="Content/css/login/ltie9.css" /> 
   <!--<![endif]-->
-
+  <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="network.ico" />
+ <!--  <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> -->
+  
   <script src="Scripts/libs/modernizr/2.5.3/modernizr.min.js"></script>
   <script type="text/javascript" src="Scripts/libs/require/1.0.7/require.min.js"></script>
   <script type="text/javascript">
@@ -79,7 +84,7 @@
                          <label class="remember cp" id="remember-label">保持登陆7天<em>（非本机请谨慎操作）</em></label></span>
                     </p>
                     <p class="pr btn block">
-                        <button class="ti cp btn-submit" id="submitButton" tabIndex="3"  type="button" > </button>
+                        <button class="ti cp btn-submit" id="submitButton" tabIndex="3" type="button" > </button>
                         <a class="pa ti btn-master" href="javascript:void(0);"><span class="loading block">正在登录</span></a>
                     </p>
                 </form>

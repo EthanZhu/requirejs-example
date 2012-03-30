@@ -1,85 +1,102 @@
-define(['require', 'config', './block.ua', './forminit'],function(require,config,block,initForm) {
+define(['require','config','./blockua','./forminit'],function(require,config){
+	
 	var resizeTimer = config.resizeTimer;
 	
 	var __action = {
-		// log : function () {
-			// if (config.debug)
-				// console.log('', arguments);
-		// },
-		log : function (info) {
-			if (config.debug)
-				console.log(info);
+		log : function(info){
+			var _config = config;
+			try{
+				if(_config.debug)
+					console.log(info);
+			}finally{
+				info = _config = null;
+			}
+			
 		},
 		
 		__pageInit : function(){
 			$('body').focus();
-			
-			$(window).resize(function(e) {
+			var _config = config;
+			__action.__pageHeight();
+			var agent = $.browser;
+			var userAgent = {
+				version : agent.version,
+				blockVersion : _config.uaVersion
+			};
+			try{
+				if(_config.isBlockUa && agent.msie && parseInt(userAgent.version) < parseInt(userAgent.blockVersion)){
+				// if( agent.mozilla ){
+					__action.__blockEarlyUa(userAgent.version);
+				}
+				else{
+					__action.__formInit();
+				}
+				
+				$(window).resize(function(e) {
 					if(resizeTimer){
-							clearTimeout(resizeTimer); 
+						clearTimeout(resizeTimer); 
 					}
 					resizeTimer = setTimeout(function(){__action.__pageHeight()},500);
-				}
-			);
-			
-			__action.__pageHeight();
-			
-			var agent = $.browser ;
-			var version = agent.version;
-			var blockVersion = config.uaVersion;
-			
-			if(config.isBlockUa && agent.msie && parseInt(version) < parseInt(blockVersion)){
-			// if( agent.mozilla ){	
-				__action.__blockEarlyUa(version);
-			}
-			else{
-				__action.__formInit();
+				});
+				
+			}finally{
+				_config = agent = userAgent = null;
 			}
 		},
+		
 		__pageHeight : function(){
-			this.log('__pageHeight');
+			var $window = $(window);
 			var windowHeight = $(window).height();
-			this.log('pageHeight:'+windowHeight);
-			if(windowHeight<574){
-				$('body').height('574');
-			}else{
-				$('body').height(windowHeight);
+			var $body = $('body');
+			var _config = config;
+			try{
+				if(parseInt(windowHeight) < 574) {
+					$body.height('574');
+				}
+				else{
+					$body.height(windowHeight);
+				}
+			}finally{
+				$window = windowHeight = $body = _config = null;
 			}
-		},
-		
 
-		__creatCssLink	:	function(url){
-			
-			var link = document.createElement("link");
-			link.type = "text/css";
-			link.rel = "stylesheet";
-			link.href = url;
-			$("head")[0].appendChild(link);
-    		
-		},
-
-		
-		__blockEarlyUa : function(version){
-			this.log('__blockEarlyUa is running');
-			var _block = require('./block.ua')
-			_block.blockIE(version);
 		},
 		
 		__formInit : function(){
-			//var formInit = require('./forminit');
-			initForm.init();
+			var $formInit = require('./forminit');
+			$formInit.init();
+			$formInit = null ;
+		},
+		
+		__creatCssLink : function(url){
+			var link = document.createElement("link");
+			try{
+				link.type = "text/css";
+				link.rel = "stylesheet";
+				link.href = url;
+				$("head")[0].appendChild(link);
+			}finally{
+				link = null;
+			}
+		},
+		
+		__blockEarlyUa : function(version){
+			var $block = require('./blockua')
+			$block.blockIE(version);
+			$block = null;
 		}
 	};
 	
 	var outInterFace = {
-		init:function(){
+		init : function(){
 			__action.__pageInit();
+			__action.log('page init')
 		},
 		creatCssLink : function(url){
 			__action.__creatCssLink(url);
 		}
 	};
 	
-	return outInterFace;
+	return outInterFace ;
 	
-})
+});

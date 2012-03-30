@@ -32,8 +32,8 @@ define(['require',
 		__loadCookieInfo : function(){
 			var isLogout = $.cookie('isLogout');
 			var cookieRemember = $.cookie('remember');
-			_initInput = require('./forminit')
-			this.log('load cookie informations')
+			_initInput = require('./forminit');
+			//this.log('load cookie informations')
 			if(cookieRemember){
 				var _inputs = {
 						username : '',
@@ -48,7 +48,6 @@ define(['require',
 					_inputs.password = $.cookie("password");
 					config.isInputPass = false;
 				}
-				this.log(_inputs)
 				config.isRemember = true;
 				_initInput.rememberInit();
 				_initInput.setInputValue(_inputs);

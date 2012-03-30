@@ -2,16 +2,12 @@
 <html class="no-js" lang="zh-cn">
 <head>
   <meta charset="utf-8">
- <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
-		Remove this if you use the .htaccess -->
-<!--   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
 <!--
 	latest version : https://github.com/EthanZhu/requirejs-example
 	-->
   <title>Requirejs example</title>
   <meta name="description" content="">
 
-  <!-- Mobile viewport optimized: h5bp.com/viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
   <link rel="stylesheet" type="text/css" href="Content/css/global/reset.css" />
@@ -23,9 +19,7 @@
   <!--[if lt IE 9]><!--> 
   	<link rel="stylesheet" type="text/css" href="Content/css/login/ltie9.css" /> 
   <!--<![endif]-->
-  <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
   <link rel="shortcut icon" href="network.ico" />
- <!--  <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> -->
   
   <script src="Scripts/libs/modernizr/2.5.3/modernizr.min.js"></script>
   <script type="text/javascript" src="Scripts/libs/require/1.0.7/require.min.js"></script>
@@ -33,8 +27,6 @@
   	require({
 		baseUrl: "Scripts",
 	  	paths: {
-			//'order'	  :	'libs/require/plugin/order',
-			//'global'  :	'global/login/require',
 			'config'  :	'global/login/config',
 			'patrns'  :	'global/login/config.patrns',
 			'console.plugin'  :	'global/console.plugins',
@@ -44,7 +36,6 @@
 			'jquery.ui' : 'libs/jquery.ui/1.8.18/ui.module'
 	  	},
 		priority:['jquery'],
-		//catchError:true,
 		waitSeconds: 60
 	},['./global/login/require/main']);
   </script>
@@ -67,7 +58,6 @@
                         <li>3- 强大的后台系统，管理内容易如反掌...</li>
                     </ul>
                 </section>
-				<!--<div class="pt10 pl60"><img src="App_Themes/global/images/icon-demo.gif" width="16" height="16"><a href="http://www.gomesoft.com" target="_blank" class="left_txt3"> 使用说明</a> </div>-->
             </div>
             <div class="fl form-action">
             	<form method="post" action="" id="form-inputs" name="login-form">

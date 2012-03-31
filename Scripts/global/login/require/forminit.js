@@ -43,7 +43,7 @@ define(['require',
 		__inputInit : function(){
 			var _config = config;
 				//this.log('input init start');
-				$(_config.formID).delegate("input", "keypress focusin focusout", function(event){
+				$(_config.formID).delegate("input"+config.inputClass, "keypress focusin focusout", function(event){
 					_config = config;
 					var type = event.type;
 					var $this = this;

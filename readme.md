@@ -1,4 +1,7 @@
 Require JS example
+
+Site: http://ethanzhu.github.com/requirejs.example/
+
 =========================
 
 web login example
